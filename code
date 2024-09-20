@@ -1,0 +1,69 @@
+# Contact Book Program
+
+# Dictionary to store contacts
+contact_book = {}
+
+def add_contact(name, phone):
+    """Adds a new contact to the contact book."""
+    if name in contact_book:
+        print(f"{name} is already in the contact book.")
+    else:
+        contact_book[name] = phone
+        print(f"Contact {name} added successfully.")
+
+def search_contact(name):
+    """Searches for a contact by name."""
+    if name in contact_book:
+        print(f"Name: {name}, Phone: {contact_book[name]}")
+    else:
+        print(f"{name} not found in contact book.")
+
+def delete_contact(name):
+    """Deletes a contact from the contact book."""
+    if name in contact_book:
+        del contact_book[name]
+        print(f"Contact {name} deleted successfully.")
+    else:
+        print(f"{name} not found in contact book.")
+
+def display_contacts():
+    """Displays all contacts in the contact book."""
+    if contact_book:
+        print("Contact List:")
+        for name, phone in contact_book.items():
+            print(f"Name: {name}, Phone: {phone}")
+    else:
+        print("Contact book is empty.")
+
+def menu():
+    """Displays the menu for contact book operations."""
+    while True:
+        print("\n--- Contact Book Menu ---")
+        print("1. Add Contact")
+        print("2. Search Contact")
+        print("3. Delete Contact")
+        print("4. Display All Contacts")
+        print("5. Exit")
+        
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            name = input("Enter name: ")
+            phone = input("Enter phone number: ")
+            add_contact(name, phone)
+        elif choice == '2':
+            name = input("Enter name to search: ")
+            search_contact(name)
+        elif choice == '3':
+            name = input("Enter name to delete: ")
+            delete_contact(name)
+        elif choice == '4':
+            display_contacts()
+        elif choice == '5':
+            print("Exiting Contact Book.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+# Start the contact book application
+menu()
